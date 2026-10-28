@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const A='/assets/';
 
 const players=[
-  {name:'SUG', role:'All Rounder', photo:'sug.webp', number:'17'},
+  {name:'Aaron Samuel', role:'Captain · Owner Icon', photo:'aaron-captain.webp', number:'C'},
   {name:'Arul Francis', role:'Bowler · Owner Icon', photo:'arul.webp', number:'01'},
   {name:'Chakravarthy Arunachalam', role:'Wicket Keeper · Vice Captain', photo:'chak.webp', number:'07'},
   {name:'Magil', role:'All Rounder', photo:'player-02.webp', number:'17'},
@@ -25,8 +25,7 @@ const players=[
   {name:'Shylesh', role:'All Rounder', photo:'player-13.webp', number:'88'},
   {name:'Kriv Kadakia', role:'Non-Tamil Icon', photo:'player-14.webp', number:'11'},
   {name:'Ulaganathan Chinnadurai', role:'Tamil Icon', photo:'player-15.webp', number:'01'},
-  {name:'Jarun', role:'Player', photo:'player-08.webp', number:'21'},
-  {name:'Aaron Samuel', role:'Captain · Owner Icon', photo:'player-01.webp', number:'C'}
+  {name:'Jarun', role:'Player', photo:'player-08.webp', number:'21'}
 ];
 
 const fixtures=[
@@ -253,6 +252,7 @@ function Sponsors(){
     <div className="partner-grid">
       <div className="partner-card dark"><img src={A+'legendary.webp'} alt="Legendary Mortgages and Insurances"/><span>LEGENDARY MORTGAGES & INSURANCES</span></div>
       <div className="partner-card light"><img src={A+'sockmakers.webp'} alt="Sockmakers"/><span>SOCKMAKERS</span></div>
+      <div className="partner-card dark sponsor-photo"><img src={A+'sug-sponsor.webp'} alt="SUG presenting the Chennai Marina Boys jersey"/><span>SUG · TEAM SPONSOR</span></div>
     </div>
   </section>;
 }
@@ -261,7 +261,7 @@ function Footer(){
   return <footer className="footer">
     <div className="tag">THE STORY CONTINUES</div>
     <h2>LONG LIVE<br/><em>THE KINGS.</em></h2>
-    <div className="footer-row"><Crest size={64}/><span>CHENNAI MARINA BOYS · TNPL-NZ SEASON 7</span><a href="#home">BACK TO TOP ↑</a></div>
+    <div className="footer-row"><Crest size={64}/><span>CHENNAI MARINA BOYS · TNPL-NZ SEASON 7</span><div className="footer-social"><a href="https://www.facebook.com/chennaimarinaboys" target="_blank" rel="noopener noreferrer" aria-label="Chennai Marina Boys on Facebook">FACEBOOK ↗</a><a href="https://www.instagram.com/chennaimarina_boys/" target="_blank" rel="noopener noreferrer" aria-label="Chennai Marina Boys on Instagram">INSTAGRAM ↗</a></div><a href="#home">BACK TO TOP ↑</a></div>
   </footer>;
 }
 
