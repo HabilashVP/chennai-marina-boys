@@ -120,7 +120,7 @@ function Hero({reduced}){
           <div>
             <small>LEGACY / HONOURS</small>
             <strong>TWO-TIME CHAMPIONS</strong>
-            <span>Cricket champions in 2021 and 2024.</span>
+            <span>TNPL champions in 2021 and 2024.</span>
           </div>
         </div>
         <div className="hero-stats" aria-label="Team honours and season">
