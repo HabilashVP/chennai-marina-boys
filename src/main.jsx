@@ -247,12 +247,11 @@ function Sponsors(){
         <div className="tag">006 / THE PEOPLE BEHIND US</div>
         <h2>POWERED BY <em>PARTNERS.</em></h2>
       </div>
-      <p>Presented with a darker luxury aesthetic to keep the club brand and sponsor identities elegant and consistent.</p>
+      <p>A heartfelt thank you to our sponsors for backing the Chennai Marina Boys. Explore the businesses behind our journey and show them your support.</p>
     </div>
     <div className="partner-grid">
-      <div className="partner-card dark"><img src={A+'legendary.webp'} alt="Legendary Mortgages and Insurances"/><span>LEGENDARY MORTGAGES & INSURANCES</span></div>
-      <div className="partner-card light"><img src={A+'sockmakers.webp'} alt="Sockmakers"/><span>SOCKMAKERS</span></div>
-      <div className="partner-card dark sponsor-photo"><img src={A+'sug-sponsor.webp'} alt="SUG presenting the Chennai Marina Boys jersey"/><span>SUG · TEAM SPONSOR</span></div>
+      <a className="partner-card dark" href="https://legendary.co.nz/" target="_blank" rel="noopener noreferrer" aria-label="Visit Legendary Mortgages and Insurances website"><img src={A+'legendary.webp'} alt="Legendary Mortgages and Insurances"/><span>LEGENDARY MORTGAGES & INSURANCES ↗</span></a>
+      <a className="partner-card light" href="https://sockmakers.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Sockmakers website"><img src={A+'sockmakers.webp'} alt="Sockmakers"/><span>SOCKMAKERS ↗</span></a>
     </div>
   </section>;
 }

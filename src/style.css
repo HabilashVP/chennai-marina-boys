@@ -284,3 +284,10 @@ button.player-card{text-align:left;width:100%;font:inherit;padding:0;cursor:poin
  .footer-social{order:3;width:100%;margin-left:0;gap:22px}
  .footer-row>a{margin-left:auto}
 }
+
+/* Sponsor cards link to official company websites. */
+.partner-card{cursor:pointer;text-decoration:none}
+.partner-card:focus-visible{outline:3px solid #f4d08b;outline-offset:4px}
+.partner-card span{transition:color .2s}
+.partner-card:hover span{color:#e8b75d}
+.partner-card.light:hover span{color:#8f6430}
