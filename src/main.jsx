@@ -16,7 +16,6 @@ const players=[
   {name:'Arul Francis', role:'Bowler · Owner Icon', photo:'arul.webp', number:'01'},
   {name:'Chakravarthy Arunachalam', role:'Wicket Keeper · Vice Captain', photo:'chak.webp', number:'07'},
   {name:'Magil', role:'All Rounder', photo:'player-02.webp', number:'17'},
-  {name:'Covash', role:'Player', photo:'player-03.webp', number:'24'},
   {name:'Tamil Selvan', role:'All Rounder', photo:'player-05.webp', number:'11'},
   {name:'Kishore', role:'Player', photo:'player-06.webp', number:'15'},
   {name:'Sri Krishna', role:'Tamil Icon', photo:'player-09.webp', number:'25'},
@@ -94,6 +93,7 @@ function ReadingProgress(){
   return <div className="reading-progress" aria-hidden="true"><span ref={ref}/></div>;
 }
 
+
 function Hero({reduced}){
   const section=useRef();
   const progress=useRef(0);
@@ -105,21 +105,33 @@ function Hero({reduced}){
   return <section className="hero" id="home" ref={section}>
     <div className="hero-noise"/>
     <div className="hero-grid"/>
-    <div className="hero-3d">{!reduced?<HeroWorld progressRef={progress}/>:<Crest className="hero-fallback" size={420}/>}</div>
     <div className="hero-gradient"/>
-    <div className="hero-content">
-      <div className="hero-eyebrow"><i/> TNPL NZ · SEASON 7 <span>AKL / NZ</span></div>
-      <div className="hero-headline"><span className="outlined">THE</span><strong>KINGS OF <em>THE MARINA.</em></strong></div>
-      <p>A GRAND CINEMATIC HOME FOR CHENNAI MARINA BOYS — MODERN CRICKET, BROTHERHOOD, AND CHAMPIONSHIP AMBITION.</p>
-      <div className="hero-actions">
-        <a href="#schedule" className="action primary">VIEW SCHEDULE <ArrowUpRight size={18}/></a>
-        <a href="#squad" className="action ghost">MEET THE SQUAD <ChevronRight size={18}/></a>
+    <div className="hero-shell">
+      <div className="hero-content">
+        <div className="hero-eyebrow"><i/> TNPL NZ · SEASON 7 <span>AKL / NZ</span></div>
+        <div className="hero-headline"><span className="outlined">THE</span><strong>KINGS OF <em>THE MARINA.</em></strong></div>
+        <p>A GRAND CINEMATIC HOME FOR CHENNAI MARINA BOYS — TWO-TIME CHAMPIONS FORGED THROUGH BROTHERHOOD, CULTURE, AND MODERN CRICKET AMBITION.</p>
+        <div className="hero-actions">
+          <a href="#schedule" className="action primary">VIEW SCHEDULE <ArrowUpRight size={18}/></a>
+          <a href="#squad" className="action ghost">MEET THE SQUAD <ChevronRight size={18}/></a>
+        </div>
+        <div className="hero-achievement reveal-card">
+          <div className="hero-cup-3d" aria-hidden="true"><Trophy size={34}/></div>
+          <div>
+            <small>LEGACY / HONOURS</small>
+            <strong>TWO-TIME CHAMPIONS</strong>
+            <span>Cricket champions in 2021 and 2024.</span>
+          </div>
+        </div>
+        <div className="hero-stats">
+          <div><strong>2021 CHAMPION</strong><span>THE FIRST TITLE</span></div>
+          <div><strong>2024 CHAMPION</strong><span>THE SECOND CROWN</span></div>
+          <div><strong>2026 SEASON 7</strong><span>THE CURRENT SQUAD</span></div>
+        </div>
       </div>
-    </div>
-    <div className="hero-stats">
-      <div><strong>2021</strong><span>Championship</span></div>
-      <div><strong>2024</strong><span>Championship</span></div>
-      <div><strong>2026</strong><span>Season 7 Squad</span></div>
+      <div className="hero-visual">
+        <div className="hero-3d">{!reduced?<HeroWorld progressRef={progress}/>:<Crest className="hero-fallback" size={420}/>}</div>
+      </div>
     </div>
     <div className="hero-bottom"><span>SCROLL TO CONTROL THE EXPERIENCE</span><ArrowDown size={19}/><span>01 — 06</span></div>
   </section>;
