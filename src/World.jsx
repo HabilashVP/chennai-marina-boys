@@ -46,7 +46,7 @@ function CrestHero({progressRef}){
     root.current.rotation.z=Math.sin(state.clock.elapsedTime*.18)*0.03;
     root.current.position.y=THREE.MathUtils.damp(root.current.position.y,-p*0.18,2.6,dt);
   });
-  return <group ref={root} position={[1.75,0.2,0]} scale={1.24}>
+  return <group ref={root} position={[0,0,0]} scale={0.88}>
     <mesh rotation={[Math.PI/2,0,0]}>
       <cylinderGeometry args={[2.1,2.1,0.26,96]}/>
       <meshStandardMaterial color="#b48438" metalness={0.92} roughness={0.22}/>
@@ -84,7 +84,7 @@ function DynamicCamera({progressRef,depth=8}){
 
 function CinematicFX(){
   return <EffectComposer>
-    <Bloom mipmapBlur luminanceThreshold={0.22} intensity={0.88} radius={0.75}/>
+    <Bloom mipmapBlur luminanceThreshold={0.22} intensity={0.48} radius={0.55}/>
     <Noise opacity={0.02}/>
     <Vignette darkness={0.5} offset={0.2}/>
   </EffectComposer>;

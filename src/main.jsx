@@ -109,13 +109,13 @@ function Hero({reduced}){
     <div className="hero-shell">
       <div className="hero-content">
         <div className="hero-eyebrow"><i/> TNPL NZ · SEASON 7 <span>AKL / NZ</span></div>
-        <div className="hero-headline"><span className="outlined">THE</span><strong>KINGS OF <em>THE MARINA.</em></strong></div>
+        <h1 className="hero-headline"><span className="outlined">THE KINGS</span><strong>OF THE<br/><em>MARINA.</em></strong></h1>
         <p>A GRAND CINEMATIC HOME FOR CHENNAI MARINA BOYS — TWO-TIME CHAMPIONS FORGED THROUGH BROTHERHOOD, CULTURE, AND MODERN CRICKET AMBITION.</p>
         <div className="hero-actions">
           <a href="#schedule" className="action primary">VIEW SCHEDULE <ArrowUpRight size={18}/></a>
           <a href="#squad" className="action ghost">MEET THE SQUAD <ChevronRight size={18}/></a>
         </div>
-        <div className="hero-achievement reveal-card">
+        <div className="hero-achievement">
           <div className="hero-cup-3d" aria-hidden="true"><Trophy size={34}/></div>
           <div>
             <small>LEGACY / HONOURS</small>
@@ -123,14 +123,15 @@ function Hero({reduced}){
             <span>Cricket champions in 2021 and 2024.</span>
           </div>
         </div>
-        <div className="hero-stats">
-          <div><strong>2021 CHAMPION</strong><span>THE FIRST TITLE</span></div>
-          <div><strong>2024 CHAMPION</strong><span>THE SECOND CROWN</span></div>
-          <div><strong>2026 SEASON 7</strong><span>THE CURRENT SQUAD</span></div>
+        <div className="hero-stats" aria-label="Team honours and season">
+          <div><strong>2021</strong><span>CHAMPIONS</span></div>
+          <div><strong>2024</strong><span>CHAMPIONS</span></div>
+          <div><strong>2026</strong><span>SEASON 7</span></div>
         </div>
       </div>
-      <div className="hero-visual">
+      <div className="hero-visual" aria-label="Rotating three-dimensional Chennai Marina Boys crest">
         <div className="hero-3d">{!reduced?<HeroWorld progressRef={progress}/>:<Crest className="hero-fallback" size={420}/>}</div>
+        <div className="visual-caption"><span>THE KINGS</span><span>EST. IN CHENNAI · UNITED IN AUCKLAND</span></div>
       </div>
     </div>
     <div className="hero-bottom"><span>SCROLL TO CONTROL THE EXPERIENCE</span><ArrowDown size={19}/><span>01 — 06</span></div>
