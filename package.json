@@ -1,0 +1,27 @@
+{
+  "name": "chennai-marina-boys-v6",
+  "version": "6.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.2.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.180.0",
+    "@react-three/fiber": "^9.3.0",
+    "@react-three/drei": "^10.7.0",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.11",
+    "framer-motion": "^12.6.2",
+    "lucide-react": "^0.468.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "postprocessing": "^6.37.8"
+  },
+  "devDependencies": {}
+}
