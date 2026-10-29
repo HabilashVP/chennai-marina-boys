@@ -6,6 +6,9 @@ import Lenis from 'lenis';
 import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {HeroWorld,HistoryWorld} from './World';
+import { StadiumEntrance, LegacyHonours, MatchdayCountdown, CinematicReel } from './V7Experience';
+import { GoldDustCursor } from './GoldDustCursor';
+import './v7.css';
 import './style.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -227,7 +230,7 @@ function Squad(){
     const key=e=>{if(e.key==='Escape')setSelected(null);if(e.key==='ArrowRight')setSelected(players[(players.indexOf(selected)+1)%players.length]);if(e.key==='ArrowLeft')setSelected(players[(players.indexOf(selected)+players.length-1)%players.length]);};
     window.addEventListener('keydown',key);const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{window.removeEventListener('keydown',key);document.body.style.overflow=old};
   },[selected]);
-  return <section id="squad" className="squad-section">
+  return <section id="squad" className="squad-section v7-player-stage">
     <div className="section-header"><div><div className="tag">004 / 2026 LINEUP</div><h2>MEET THE <em>SQUAD.</em></h2></div><p>Browse the player reveals, select a card for a full-screen profile, and move between teammates with the arrow keys.</p></div>
     <div className="squad-toolbar"><label className="fixture-search"><Search size={18}/><input aria-label="Search players" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search players"/></label><div className="role-filters">{[['all','All players'],['icon','Icons'],['all rounder','All rounders'],['bowler','Bowlers']].map(([v,label])=><button key={v} className={category===v?'active':''} onClick={()=>setCategory(v)}>{label}</button>)}</div></div>
     <div className="squad-grid">{shown.map((p,idx)=><button type="button" key={p.name} className="player-card reveal-card" onClick={()=>setSelected(p)} aria-label={`View ${p.name} profile`}><div className="player-image-wrap"><img src={A+p.photo} loading="lazy" alt={`${p.name} jersey presentation`}/><div className="player-badge">#{p.number}</div><div className="player-shine"/></div><div className="player-body"><div className="player-topline"><span>{String(players.indexOf(p)+1).padStart(2,'0')}</span><ArrowUpRight size={17}/></div><h3>{p.name}</h3><p>{p.role}</p><span className="player-view">VIEW PROFILE <ArrowUpRight size={14}/></span></div></button>)}</div>
@@ -293,15 +296,19 @@ function App(){
   const reduced=useReducedMotion();
   useSmoothScroll(reduced);
   return <>
-    <RevealManager/><ReadingProgress/>
+    <RevealManager/><ReadingProgress/><GoldDustCursor/>
     <IntroScreen/>
     <Header/>
     <main>
       <Hero reduced={reduced}/>
+      <StadiumEntrance/>
       <Marquee/>
       <Statement/>
       <Legacy reduced={reduced}/>
+      <LegacyHonours/>
+      <MatchdayCountdown fixtures={fixtures}/>
       <Schedule/>
+      <CinematicReel/>
       <Squad/>
       <Showcase/>
       <Sponsors/>
