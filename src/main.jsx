@@ -33,8 +33,8 @@ const players=[
 ];
 
 const fixtures=[
-  {date:'Sun 1 Nov 2026', time:'9:30 AM', opponent:'Thiruchendur Thunderbolts', ground:'Keith Hay Park · A4'},
-  {date:'Sun 1 Nov 2026', time:'2:30 PM', opponent:'Power Pandy', ground:'Keith Hay Park · 3A'},
+  {date:'Sun 1 Nov 2026', time:'9:30 AM', opponent:'Thiruchendur Thunderbolts', ground:'Keith Hay Park · 4A'},
+  {date:'Sun 1 Nov 2026', time:'2:30 PM', opponent:'Power Pondy', ground:'Keith Hay Park · 3A'},
   {date:'Sun 8 Nov 2026', time:'9:30 AM', opponent:'Nellai Raging Bulls', ground:'Keith Hay Park · 6A'},
   {date:'Sun 8 Nov 2026', time:'2:30 PM', opponent:'Covai Super Kings', ground:'Keith Hay Park · 5A'},
   {date:'Sun 15 Nov 2026', time:'9:30 AM', opponent:'Trichy Rockfort Cholas', ground:'Keith Hay Park · 6A'},
