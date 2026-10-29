@@ -1,4 +1,3 @@
-import { CricClubsScores } from './CricClubsScores';
 import React,{useEffect,useRef,useState} from 'react';
 import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
@@ -89,8 +88,8 @@ export function MatchdayCountdown({fixtures=[]}){
     <div className="v7-matchday-light" aria-hidden="true"/>
     <span className="v7-kicker"><CalendarDays size={16}/> NEXT UP / MATCHDAY</span>
     {next?<><h2>THE NEXT <em>BATTLE.</em></h2><div className="v7-versus"><img src={A+'crest.webp'} alt="Chennai Marina Boys"/><div><span>CHENNAI MARINA BOYS</span><strong>VS</strong><span>{next.data.opponent}</span></div></div><div className="v7-countdown" role="timer" aria-label="Time until next match">{[['DAYS',countdown.days],['HOURS',countdown.hours],['MINUTES',countdown.minutes],['SECONDS',countdown.seconds]].map(([label,value])=><div key={label}><strong>{pad(value)}</strong><span>{label}</span></div>)}</div><p>{next.data.date} · {next.data.time} · {next.data.ground}</p></>:<><h2>THE NEXT <em>CHAPTER.</em></h2><p>No future matches are currently listed. Update the fixtures array when the tournament publishes new games.</p><a href="#schedule" className="v7-inline-link">VIEW THE MATCH SCHEDULE <ArrowUpRight size={18}/></a></>}
-    <CricClubsScores/>
-    <div className="v7-cricclubs"><span className="v7-kicker">OFFICIAL MATCH SCORING</span><p>Follow TNPL NZ fixtures, scorecards and match updates on CricClubs.</p><a className="v7-scores-link" href="https://cricclubs.com/TNPLNZ" target="_blank" rel="noopener noreferrer">OPEN TNPL NZ SCORES <ArrowUpRight size={18}/></a><small>CricClubs remains the authoritative scoring platform.</small></div>
+    
+    <div className="v7-cricclubs"><span className="v7-kicker">OFFICIAL MATCH SCORING</span><p>Follow TNPL NZ fixtures, scorecards and match updates on CricClubs.</p><a className="v7-scores-link" href="#scores">OPEN SCORES TAB <ArrowUpRight size={18}/></a><small>CricClubs remains the authoritative scoring platform.</small></div>
   </section>;
 }
 
