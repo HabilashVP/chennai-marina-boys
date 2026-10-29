@@ -15,16 +15,16 @@ const players=[
   {name:'Aaron Samuel', role:'Captain · Owner Icon', photo:'aaron-captain.webp', number:'C'},
   {name:'Arul Francis', role:'Bowler · Owner Icon', photo:'arul.webp', number:'01'},
   {name:'Chakravarthy Arunachalam', role:'Wicket Keeper · Vice Captain', photo:'chak.webp', number:'07'},
-  {name:'Magil', role:'All Rounder', photo:'player-02.webp', number:'17'},
+  {name:'Magil', role:'Bowler', photo:'player-02.webp', number:'17'},
   {name:'Tamil Selvan', role:'All Rounder', photo:'player-05.webp', number:'11'},
-  {name:'Kishore', role:'Player', photo:'player-06.webp', number:'15'},
+  {name:'Kishore', role:'All Rounder', photo:'player-06.webp', number:'15'},
   {name:'Sri Krishna', role:'Tamil Icon', photo:'player-09.webp', number:'25'},
   {name:'Roy', role:'Tamil Icon', photo:'roy.webp', number:'12'},
   {name:'Sandy', role:'All Rounder', photo:'player-12.webp', number:'03'},
   {name:'Shylesh', role:'All Rounder', photo:'player-13.webp', number:'88'},
   {name:'Kriv Kadakia', role:'Non-Tamil Icon', photo:'player-14.webp', number:'11'},
   {name:'Ulaganathan Chinnadurai', role:'Tamil Icon', photo:'player-15.webp', number:'01'},
-  {name:'Jarun', role:'Player', photo:'player-08.webp', number:'21'}
+  {name:'J Arun', role:'All Rounder', photo:'player-08.webp', number:'21'}
 ];
 
 const fixtures=[
