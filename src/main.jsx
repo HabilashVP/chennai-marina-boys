@@ -1,3 +1,5 @@
+import {MarinaStory} from './MarinaStory';
+import './chennai-home.css';
 import {CinematicIntro} from './CinematicIntro';
 import {ScoresPage} from './ScoresPage';
 import React,{useEffect,useRef,useState} from 'react';
@@ -11,6 +13,7 @@ import {HeroWorld,HistoryWorld} from './World';
 import { StadiumEntrance, LegacyHonours, MatchdayCountdown, CinematicReel } from './V7Experience';
 import { GoldDustCursor } from './GoldDustCursor';
 import './v7.css';
+import {HeroSketchReveal} from './HeroSketchReveal';
 import './style.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -62,7 +65,7 @@ function useSmoothScroll(reduced){
 
 function Header(){
   const [open,setOpen]=useState(false);
-  const nav=[['HOME','#home'],['LEGACY','#legacy'],['SCHEDULE','#schedule'],['SQUAD','#squad'],['SHOWCASE','#showcase'],['PARTNERS','#partners'],['SCORES','#scores']];
+  const nav=[['HOME','#home'],['LEGACY','#legacy'],['SCHEDULE','#schedule'],['SQUAD','#squad'],['SHOWCASE','#showcase'],['PARTNERS','#partners'],['STORY','#story'],['SCORES','#scores']];
   return <header className="nav-header">
     <a className="nav-logo" href="#home"><Crest size={48}/><span>THE KINGS<small>CHENNAI MARINA BOYS</small></span></a>
     <nav className={open?'nav-links open':'nav-links'}>{nav.map(([label,href],i)=><a onClick={()=>setOpen(false)} key={href} href={href}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a>)}</nav>
@@ -101,6 +104,7 @@ function Hero({reduced}){
   },[]);
   return <section className="hero" id="home" ref={section}>
     <div className="hero-noise"/>
+    <HeroSketchReveal/>
     <div className="hero-grid"/>
     <div className="hero-gradient"/>
     <div className="hero-shell">
@@ -288,43 +292,41 @@ function App(){
   const reduced=useReducedMotion();
   useSmoothScroll(reduced);
   const [scoresOnly,setScoresOnly]=useState(()=>window.location.hash==='#scores');
-  const [allowIntro,setAllowIntro]=useState(()=>window.location.hash!=='#scores');
+  const [storyOnly,setStoryOnly]=useState(()=>window.location.hash==='#story');
+  const [allowIntro,setAllowIntro]=useState(()=>!['#scores','#story'].includes(window.location.hash));
   useEffect(()=>{
-    let lastWasScores=window.location.hash==='#scores';
-    let frame=0;
-    const jumpToSection=(hash)=>{
-      const id=decodeURIComponent(hash.slice(1));
-      if(!id || id==='scores')return;
-      // The Home tree may have just remounted after leaving Scores.
-      frame=window.requestAnimationFrame(()=>{
-        frame=window.requestAnimationFrame(()=>{
-          const target=document.getElementById(id);
-          if(!target)return;
-          ScrollTrigger.refresh();
-          const top=window.scrollY+target.getBoundingClientRect().top-78;
-          window.scrollTo({top:Math.max(0,top),behavior:'instant'});
-        });
-      });
+    let previousSpecial=['#scores','#story'].includes(window.location.hash);
+    let rafA=0,rafB=0;
+    const goTo=(hash)=>{
+      const id=decodeURIComponent((hash||'#home').slice(1))||'home';
+      rafA=requestAnimationFrame(()=>{rafB=requestAnimationFrame(()=>{
+        const el=document.getElementById(id);
+        if(!el)return;
+        ScrollTrigger.refresh();
+        const top=window.scrollY+el.getBoundingClientRect().top-78;
+        window.scrollTo({top:Math.max(0,top),behavior:'instant'});
+      });});
     };
-    const sync=()=>{
+    const onHash=()=>{
       const hash=window.location.hash;
-      const isScores=hash==='#scores';
-      const wasScores=lastWasScores;
-      lastWasScores=isScores;
-      if(isScores){setScoresOnly(true);setAllowIntro(false);window.scrollTo({top:0,behavior:'instant'});return;}
-      if(wasScores){setScoresOnly(false);setAllowIntro(false);jumpToSection(hash||'#home');}
-      // Normal Home anchors: do not force-scroll to the top.
+      const scores=hash==='#scores',story=hash==='#story';
+      const special=scores||story;
+      const leavingSpecial=previousSpecial&&!special;
+      previousSpecial=special;
+      setScoresOnly(scores);setStoryOnly(story);setAllowIntro(false);
+      if(special){window.scrollTo({top:0,behavior:'instant'});return;}
+      // Do not force Home-to-Home navigation back to the top.
+      if(leavingSpecial)goTo(hash);
     };
-    window.addEventListener('hashchange',sync);
-    // Support bookmarks opened directly at a section.
-    if(window.location.hash && window.location.hash!=='#scores')jumpToSection(window.location.hash);
-    return()=>{window.removeEventListener('hashchange',sync);window.cancelAnimationFrame(frame)};
+    window.addEventListener('hashchange',onHash);
+    if(window.location.hash&&!['#scores','#story'].includes(window.location.hash))goTo(window.location.hash);
+    return()=>{window.removeEventListener('hashchange',onHash);cancelAnimationFrame(rafA);cancelAnimationFrame(rafB);};
   },[]);
   return <>
     <RevealManager/><ReadingProgress/><GoldDustCursor/>
-    {!scoresOnly&&allowIntro&&<IntroScreen/>}
+    {!scoresOnly&&!storyOnly&&allowIntro&&<IntroScreen/>}
     <Header/>
-    {scoresOnly?<ScoresPage/>:<main>
+    {scoresOnly?<ScoresPage/>:storyOnly?<MarinaStory/>:<main>
       <Hero reduced={reduced}/>
       <StadiumEntrance/>
       <Marquee/>

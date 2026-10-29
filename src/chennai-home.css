@@ -1,0 +1,4 @@
+/* V7.7: subtle, original architectural illustrations added to the existing real-photo sketch background */
+.hero .marina-sketch::after{content:"";position:absolute;bottom:1%;right:-5%;width:min(78%,1100px);height:34%;background:url('/assets/chennai-skyline.svg') center bottom/contain no-repeat;opacity:.22;mix-blend-mode:screen;pointer-events:none;filter:drop-shadow(0 0 8px rgba(216,169,83,.19));z-index:2}
+.hero .marina-sketch__shade{z-index:3}
+@media(max-width:760px){.hero .marina-sketch::after{right:-28%;bottom:5%;width:120%;height:25%;opacity:.18}}

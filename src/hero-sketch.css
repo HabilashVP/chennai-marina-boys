@@ -1,0 +1,22 @@
+/* V7.6: aligned championship photo -> gold sketch -> real-colour spotlight */
+.hero .marina-sketch{position:absolute;inset:0;pointer-events:none;overflow:hidden;isolation:isolate;z-index:0}
+.marina-sketch__base,.marina-sketch__colour,.marina-sketch__shade{position:absolute;inset:0;pointer-events:none}
+.marina-sketch__base,.marina-sketch__colour{background-position:center center;background-size:cover;background-repeat:no-repeat}
+.marina-sketch__base{background-image:url('/assets/marina-photo-sketch.webp');filter:contrast(1.08) saturate(1.05);opacity:.98}
+.marina-sketch__colour{background-image:url('/assets/marina-photo-colour.webp');opacity:0;filter:saturate(1.13) contrast(1.05);
+  -webkit-mask-image:radial-gradient(circle 155px at var(--reveal-x,-999px) var(--reveal-y,-999px),#000 0%,rgba(0,0,0,.97) 32%,rgba(0,0,0,.7) 55%,transparent 100%);
+  mask-image:radial-gradient(circle 155px at var(--reveal-x,-999px) var(--reveal-y,-999px),#000 0%,rgba(0,0,0,.97) 32%,rgba(0,0,0,.7) 55%,transparent 100%);
+  transition:opacity .18s ease}
+.marina-sketch.is-active .marina-sketch__colour{opacity:1}
+/* Preserve readability beneath giant type and keep crisp crest unobstructed. */
+.marina-sketch__shade{background:linear-gradient(90deg,rgba(3,7,14,.56) 0%,rgba(3,7,14,.43) 24%,rgba(3,7,14,.17) 45%,rgba(3,7,14,.06) 72%,rgba(3,7,14,.13) 100%)}
+.hero>.hero-gradient{background:linear-gradient(90deg,rgba(3,7,14,.20),rgba(3,7,14,.08) 46%,transparent 74%)}
+.hero>.hero-shell,.hero>.hero-bottom{position:relative;z-index:2}
+.hero>.hero-grid,.hero>.hero-gradient,.hero>.hero-noise{pointer-events:none}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.marina-sketch__colour{display:none!important}}
+@media(max-width:768px){
+  .marina-sketch__base,.marina-sketch__colour{background-position:46% center}
+  .marina-sketch__base{opacity:.82}
+  .marina-sketch__shade{background:linear-gradient(180deg,rgba(3,7,14,.60),rgba(3,7,14,.45) 48%,rgba(3,7,14,.67))}
+  .hero>.hero-gradient{background:linear-gradient(180deg,rgba(3,7,14,.16),rgba(3,7,14,.10) 48%,rgba(3,7,14,.34))}
+}
