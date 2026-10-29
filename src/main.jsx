@@ -1,3 +1,5 @@
+import {CinematicIntro} from './CinematicIntro';
+import {ScoresPage} from './ScoresPage';
 import React,{useEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {motion,AnimatePresence,useReducedMotion} from 'framer-motion';
@@ -60,7 +62,7 @@ function useSmoothScroll(reduced){
 
 function Header(){
   const [open,setOpen]=useState(false);
-  const nav=[['HOME','#home'],['LEGACY','#legacy'],['SCHEDULE','#schedule'],['SQUAD','#squad'],['SHOWCASE','#showcase'],['PARTNERS','#partners']];
+  const nav=[['HOME','#home'],['LEGACY','#legacy'],['SCHEDULE','#schedule'],['SQUAD','#squad'],['SHOWCASE','#showcase'],['PARTNERS','#partners'],['SCORES','#scores']];
   return <header className="nav-header">
     <a className="nav-logo" href="#home"><Crest size={48}/><span>THE KINGS<small>CHENNAI MARINA BOYS</small></span></a>
     <nav className={open?'nav-links open':'nav-links'}>{nav.map(([label,href],i)=><a onClick={()=>setOpen(false)} key={href} href={href}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a>)}</nav>
@@ -68,18 +70,8 @@ function Header(){
   </header>;
 }
 
-function IntroScreen(){
-  const [on,setOn]=useState(!sessionStorage.getItem('cmb-v5-seen'));
-  useEffect(()=>{
-    const id=setTimeout(()=>{setOn(false);sessionStorage.setItem('cmb-v5-seen','1')},1800);
-    return()=>clearTimeout(id);
-  },[]);
-  return <AnimatePresence>{on&&<motion.div className="preloader" exit={{clipPath:'inset(0 0 100% 0)'}} transition={{duration:.9,ease:[.76,0,.24,1]}}>
-    <motion.img src={A+'crest.webp'} initial={{scale:.55,opacity:0,rotate:-10}} animate={{scale:1,opacity:1,rotate:0}} transition={{duration:.8}} alt="Marina Boys crest"/>
-    <div>ENTER THE MARINA <b>✦</b></div>
-    <motion.i initial={{scaleX:0}} animate={{scaleX:1}} transition={{duration:1.25}}/>
-  </motion.div>}</AnimatePresence>;
-}
+function IntroScreen(){return <CinematicIntro/>;}
+
 
 function ReadingProgress(){
   const ref=useRef();
@@ -295,11 +287,44 @@ function RevealManager(){
 function App(){
   const reduced=useReducedMotion();
   useSmoothScroll(reduced);
+  const [scoresOnly,setScoresOnly]=useState(()=>window.location.hash==='#scores');
+  const [allowIntro,setAllowIntro]=useState(()=>window.location.hash!=='#scores');
+  useEffect(()=>{
+    let lastWasScores=window.location.hash==='#scores';
+    let frame=0;
+    const jumpToSection=(hash)=>{
+      const id=decodeURIComponent(hash.slice(1));
+      if(!id || id==='scores')return;
+      // The Home tree may have just remounted after leaving Scores.
+      frame=window.requestAnimationFrame(()=>{
+        frame=window.requestAnimationFrame(()=>{
+          const target=document.getElementById(id);
+          if(!target)return;
+          ScrollTrigger.refresh();
+          const top=window.scrollY+target.getBoundingClientRect().top-78;
+          window.scrollTo({top:Math.max(0,top),behavior:'instant'});
+        });
+      });
+    };
+    const sync=()=>{
+      const hash=window.location.hash;
+      const isScores=hash==='#scores';
+      const wasScores=lastWasScores;
+      lastWasScores=isScores;
+      if(isScores){setScoresOnly(true);setAllowIntro(false);window.scrollTo({top:0,behavior:'instant'});return;}
+      if(wasScores){setScoresOnly(false);setAllowIntro(false);jumpToSection(hash||'#home');}
+      // Normal Home anchors: do not force-scroll to the top.
+    };
+    window.addEventListener('hashchange',sync);
+    // Support bookmarks opened directly at a section.
+    if(window.location.hash && window.location.hash!=='#scores')jumpToSection(window.location.hash);
+    return()=>{window.removeEventListener('hashchange',sync);window.cancelAnimationFrame(frame)};
+  },[]);
   return <>
     <RevealManager/><ReadingProgress/><GoldDustCursor/>
-    <IntroScreen/>
+    {!scoresOnly&&allowIntro&&<IntroScreen/>}
     <Header/>
-    <main>
+    {scoresOnly?<ScoresPage/>:<main>
       <Hero reduced={reduced}/>
       <StadiumEntrance/>
       <Marquee/>
@@ -312,7 +337,7 @@ function App(){
       <Squad/>
       <Showcase/>
       <Sponsors/>
-    </main>
+    </main>}
     <Footer/>
   </>;
 }
