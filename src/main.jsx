@@ -14,7 +14,7 @@ const A='/assets/';
 const players=[
   {name:'Aaron Samuel', role:'Captain · Owner Icon', photo:'aaron-captain.webp', number:'C'},
   {name:'Arul Francis', role:'Bowler · Owner Icon', photo:'arul.webp', number:'01'},
-  {name:'Chakravarthy Arunachalam', role:'Wicket Keeper · Vice Captain', photo:'chak.webp', number:'07'},
+  {name:'Chakravarthy Arunachalam', role:'Wicket Keeper · Vice Captain · Owner Icon', photo:'chak.webp', number:'07'},
   {name:'Magil', role:'Bowler', photo:'player-02.webp', number:'17'},
   {name:'Tamil Selvan', role:'All Rounder', photo:'player-05.webp', number:'11'},
   {name:'Kishore', role:'All Rounder', photo:'player-06.webp', number:'15'},
@@ -24,7 +24,9 @@ const players=[
   {name:'Shylesh', role:'All Rounder', photo:'player-13.webp', number:'88'},
   {name:'Kriv Kadakia', role:'Non-Tamil Icon', photo:'player-14.webp', number:'11'},
   {name:'Ulaganathan Chinnadurai', role:'Tamil Icon', photo:'player-15.webp', number:'01'},
-  {name:'J Arun', role:'All Rounder', photo:'player-08.webp', number:'21'}
+  {name:'J Arun', role:'All Rounder', photo:'player-08.webp', number:'21'},
+  {name:'Sethu Srinivasan', role:'Bowler', photo:'sethu-srinivasan.webp', number:'07'},
+  {name:'Baldev Singh Kahlon', role:'Icon · Batter', photo:'baldev-singh-kahlon.webp', number:'ICON'}
 ];
 
 const fixtures=[
